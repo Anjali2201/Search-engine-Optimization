@@ -5,9 +5,8 @@ from web_scrapping import urls
 def search(query):
     query = query.lower()
     query_terms = query.split()
-    relevant_docs = set(range(len(urls)))  # Adjust this to the actual number of documents
+    relevant_docs = set(range(len(urls)))  
     matching_docs = {}
-
     for term in query_terms:
         if term in inverted_index:
             relevant_docs &= inverted_index[term]
@@ -16,7 +15,6 @@ def search(query):
                     matching_docs[doc_index].add(term)
                 else:
                     matching_docs[doc_index] = {term}
-
     return relevant_docs, matching_docs
 
 # Example search query
